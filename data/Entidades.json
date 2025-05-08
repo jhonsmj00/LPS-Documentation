@@ -1,0 +1,401 @@
+[
+    {
+        "ID": 1,
+        "EntityName": "E_BugRequest",
+        "EntityRoute": "General/BugTracker",
+        "EntityDescription": "Entidad que representa una peticion de registro de Bug.",
+        "EntityImage": ""
+    },
+    {
+        "ID": 2,
+        "EntityName": "E_ArchivoCoche",
+        "EntityRoute": "General/GestionCoches",
+        "EntityDescription": "Entidad que representa peticion de guardado de archivos adjuntos de registro de un coche.",
+        "EntityImage": "" 
+    },
+    {
+        "ID": 3,
+        "EntityName": "E_Coches",
+        "EntityRoute": "General/GestionCoches",
+        "EntityDescription": "Entidad que representa atributos de un coche.",
+        "EntityImage": ""
+    },
+    {
+        "ID": 4,
+        "EntityName": "E_Delegacion",
+        "EntityRoute": "General/GestionCoches",
+        "EntityDescription": "Representa una coleccion de datos tipo Dictionary el cual esta definido por una key y su nombre",
+        "EntityImage": ""
+    },
+    {
+        "ID": 5,
+        "EntityName": "E_SolicitudCoche",
+        "EntityRoute": "General/GestionCoches",
+        "EntityDescription": "Entidad que representa una solicitud de coche.",
+        "EntityImage": ""
+    },
+    {
+        "ID": 4,
+        "EntityName": "E_ArchivoIncidencia",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "Entidad que representa el guardado de archivos adjuntos de una incidencia.",
+        "EntityImage": ""
+    },
+    {
+        "ID": 5,
+        "EntityName": "E_Estado",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "Entidad que define una serie de atributos para realizar una auditoria del usuario y el estado de una incidencia",
+        "EntityImage": ""
+    },
+    {
+        "ID": 6,
+        "EntityName": "E_Incidencia",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "Entidad que representa las caracteristicas de una incidencia.",
+        "EntityImage": ""
+    },
+    {
+        "ID": 7,
+        "EntityName": "E_SolicitudDelineacion",
+        "EntityRoute": "Movil/DelineacionLogic",
+        "EntityDescription": "Entidad que define atributos de una solicitud de delineacion (delimitacion de terreno).",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Localidades",
+        "EntityRoute": "Movil/MovilData",
+        "EntityDescription": "Entidad que establece atributos de medicion y ubicacion de una localidad.",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Modulo",
+        "EntityRoute": "Movil/MovilData",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Operador",
+        "EntityRoute": "Movil/MovilData",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_OperadorEmplazamiento",
+        "EntityRoute": "Movil/MovilData",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Propietarios",
+        "EntityRoute": "Movil/MovilData",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Proyecto",
+        "EntityRoute": "Movil/MovilData",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Estado",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Tecnologias",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Trabajo",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Coordinacion",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_EstadoSegui",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_Seguimiento",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID": 8,
+        "EntityName": "E_AccesoDocumentacion",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Emplazamiento",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Estado",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Festivos",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Rutas",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_TiposDeAusencia",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Visitas",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Albaran",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Almacen",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_AprobacionesCompra",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Aprobador",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Compras",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Producto",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ProductoAlmacen",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ProductoAlmacenGrouped",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ProductoNodo",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ProductoStock",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Proveedor",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_SolicitudCompra",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ComentariosFibra",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_EstadoFibra",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Localidades",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_GraficosProyectoLyntia",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ProyectosRedFija",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_SeguimientoE2E",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_SolicitudDiseñoF",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_AccesosFibra",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_EmplazamientoFibra",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Aprobaciones",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_DatosAprobacion",
+        "EntityRoute": "General/SoporteLogic",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Entrevistas",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ProcesoSeleccion",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_UsuariosRRHH",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Comentarios",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_ErrorServices",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_Role",
+        "EntityDescription": "",
+        "EntityImage": ""
+    },
+    {
+        "ID":8,
+        "EntityName": "E_User",
+        "EntityDescription": "",
+        "EntityImage": ""
+    }
+]
