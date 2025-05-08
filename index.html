@@ -4,36 +4,407 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="index.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <title>LPS - Documentation</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f5f7fa;
+            --border-color: #dfe4ea;
+            --text-color: #34495e;
+            --header-bg: #2c3e50;
+            --sidenav-bg: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .menu-button {
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .header-title i {
+            margin-right: 10px;
+        }
+        
+        /* Sidenav styles */
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: var(--sidenav-bg);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidenav a {
+            padding: 15px 15px 15px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #ecf0f1;
+            display: block;
+            transition: 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .sidenav a:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .sidenav a.active {
+            background-color: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            padding: 8px 15px;
+        }
+        
+        #main {
+            transition: margin-left .3s;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content-header {
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--light-bg);
+            padding-bottom: 20px;
+        }
+        
+        .content-header h1 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-header h1 i {
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        .content-description {
+            font-size: 18px;
+            color: #7f8c8d;
+            max-width: 800px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .dashboard-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+        
+        .dashboard-card:nth-child(2) {
+            border-top-color: #e74c3c;
+        }
+        
+        .dashboard-card:nth-child(3) {
+            border-top-color: #2ecc71;
+        }
+        
+        .dashboard-card:nth-child(4) {
+            border-top-color: #f39c12;
+        }
+        
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .dashboard-card:nth-child(2) .card-icon {
+            color: #e74c3c;
+        }
+        
+        .dashboard-card:nth-child(3) .card-icon {
+            color: #2ecc71;
+        }
+        
+        .dashboard-card:nth-child(4) .card-icon {
+            color: #f39c12;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .card-description {
+            flex: 1;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .card-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        
+        .card-link:hover {
+            background-color: #e1e8ed;
+        }
+        
+        .section-heading {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+        
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #f5f7fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+            font-size: 15px;
+            display: block;
+            overflow-x: auto;
+            color: #34495e;
+            line-height: 1.5;
+        }
+        
+        .documentation-cta {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .documentation-cta h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .documentation-cta p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #3498db;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: rgba(255,255,255,0.9);
+            transform: translateY(-2px);
+        }
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+        
+        @media screen and (max-width: 768px) {
+            #main {
+                padding: 20px;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Entidades</a>
-  <a href="#">Aplicaciones</a>
-  <a href="#">Infraestructura</a>
-  <a href="#">Servicios</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="entidades/index.html">Entidades</a>
+    <a href="aplicaciones/index.html">Aplicaciones</a>
+    <a href="infraestructura/index.html">Infraestructura</a>
+    <a href="servicios/index.html">Servicios</a>
 </div>
 
-<!-- Use any element to open the sidenav -->
-<div onclick="openNav()">
-    <i class="fa-solid fa-bars"></i>
+<div class="header">
+    <div class="menu-button" onclick="openNav()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="header-title">
+        <i class="fa-solid fa-code"></i> LPS Documentation
+    </div>
 </div>
 
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
-    <h1>Documentacion LPS</h1>
-    <pre>
-        <code>
-            if(){
-                
-            }
-        </code>
-    </pre>
-</div>
-<script src="index.js"></script>
+    <div class="content-header">
+        <h1><i class="fa-solid fa-book"></i> Documentación LPS</h1>
+        <p class="content-description">
+            Bienvenido a la documentación oficial del sistema LPS. Esta plataforma proporciona información detallada sobre 
+            entidades, aplicaciones, infraestructura y servicios disponibles en el sistema.
+        </p>
+    </div>
 
+    <div class="dashboard">
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <h2 class="card-title">Entidades</h2>
+            <p class="card-description">
+                Explorar el modelo de datos del sistema incluyendo todas las entidades, 
+                sus propiedades, relaciones y reglas de negocio asociadas.
+            </p>
+            <a href="entidades/index.html" class="card-link">Ver documentación</a>
+        </div>
+        
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <h2 class="card-title">Aplicaciones</h2>
+            <p class="card-description">
+                Conoce todos los componentes y aplicaciones disponibles, 
+                incluyendo características, configuraciones y casos de uso.
+            </p>
+            <a href="aplicaciones/index.html" class="card-link">Ver documentación</a>
+        </div>
+        
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fa-solid fa-server"></i>
+            </div>
+            <h2 class="card-title">Infraestructura</h2>
+            <p class="card-description">
+                Información sobre la arquitectura del sistema, servidores, 
+                bases de datos, redes y otros componentes de infraestructura.
+            </p>
+            <a href="infraestructura/index.html" class="card-link">Ver documentación</a>
+        </div>
+        
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fa-solid fa-gears"></i>
+            </div>
+            <h2 class="card-title">Servicios</h2>
+            <p class="card-description">
+                Detalles sobre los servicios disponibles, APIs, 
+                integraciones, protocolos de comunicación y ejemplos de uso.
+            </p>
+            <a href="servicios/index.html" class="card-link">Ver documentación</a>
+        </div>
+    </div>
+    
+    <h2 class="section-heading">Ejemplo de código</h2>
+    <code>
+if (condicionLogica) {
+    // Ejecutar acciones específicas 
+    const resultado = procesarInformacion(datos);
+    
+    // Gestionar el resultado
+    if (resultado.esValido) {
+        aplicarCambios(resultado.datos);
+    } else {
+        manejarError(resultado.mensaje);
+    }
+}
+    </code>
+    
+    <div class="documentation-cta">
+        <h2>¿Necesitas ayuda adicional?</h2>
+        <p>
+            Consulta la documentación avanzada o contacta con el equipo de soporte para resolver cualquier duda sobre la implementación o el uso de las funcionalidades del sistema.
+        </p>
+        <a href="soporte.html" class="cta-button">Contactar soporte</a>
+    </div>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>
 </body>
 </html>

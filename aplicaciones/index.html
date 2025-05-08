@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>LPS - Aplicaciones</title>
+    <style>
+        /* Estilos específicos para la página de aplicaciones */
+        .app-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .app-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        .app-image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .app-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s ease;
+        }
+        
+        .app-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .app-content {
+            flex: 1;
+        }
+        
+        .app-title {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .app-title i {
+            margin-right: 10px;
+            color: #3498db;
+            font-size: 24px;
+        }
+        
+        .app-description {
+            color: #34495e;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .app-route {
+            display: inline-block;
+            background-color: #f5f7fa;
+            color: #7f8c8d;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 15px;
+            margin-top: 15px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .app-route i {
+            color: #3498db;
+            margin-right: 8px;
+        }
+        
+        .app-meta {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .app-meta-item {
+            background-color: #ecf0f1;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #576574;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
+        }
+        
+        .app-meta-item:hover {
+            background-color: #dfe6e9;
+        }
+        
+        .app-meta-item i {
+            color: #3498db;
+        }
+        
+        .section-heading {
+            color: #2c3e50;
+            font-size: 24px;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        
+        /* Estilos responsivos */
+        @media (min-width: 768px) {
+            .app-card {
+                flex-direction: row;
+            }
+            
+            .app-image-container {
+                width: 45%;
+                margin-bottom: 0;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            .app-content {
+                width: 55%;
+                padding-left: 30px;
+            }
+        }
+        
+        /* Estilos para la paginación */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 8px;
+        }
+        
+        .pagination-button {
+            background-color: #f5f7fa;
+            border: 1px solid #dfe4ea;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+        
+        .pagination-button:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .pagination-button.active {
+            background-color: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .pagination-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Estilos para el buscador */
+        .search-container {
+            margin: 20px 0 30px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dfe4ea;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            background-color: white;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 2px 12px rgba(52, 152, 219, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+            z-index: 1;
+        }
+        
+        .search-wrapper {
+            position: relative;
+        }
+        
+        /* Estilos para mensajes */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        
+        .no-results i {
+            font-size: 48px;
+            color: #95a5a6;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        /* Añadimos una animación suave para la carga de las tarjetas */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .app-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .app-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .app-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../entidades/index.html">Entidades</a>
+  <a href="index.html" class="active">Aplicaciones</a>
+  <a href="../infraestructura/index.html">Infraestructura</a>
+  <a href="../servicios/index.html">Servicios</a>
+</div>
+<div class="header">
+    <div class="menu-button" onclick="openNav()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div href="../index.html"  class="header-title">
+        <i class="fa-solid fa-code"></i> LPS Documentation
+    </div>
+</div>
+<div id="main">
+    <div class="content-header">
+        <h1><i class="fa-solid fa-puzzle-piece"></i> Documentación de Aplicaciones</h1>
+        <p class="content-description">
+            Este módulo proporciona información detallada sobre todas las aplicaciones y componentes disponibles en el sistema LPS.
+            Cada aplicación incluye descripciones, rutas de acceso y ejemplos visuales para facilitar su implementación.
+        </p>
+    </div>
+    
+    <div class="search-container">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchBox" class="search-box" placeholder="Buscar aplicaciones por nombre, descripción o ruta..." onkeyup="searchApps()">
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="app-container" class="app-cards-container"></div>
+        
+        <div class="pagination" id="pagination"></div>
+    </div>
+</div>
+
+<!-- Incluye los datos JSON directamente -->
+<script>
+const data = [
+  {
+    "ID": 1,
+    "ApplicationName": "AddBug",
+    "ApplicationRoute": "General/BugTracker",
+    "ApplicationDescription": "El método AddBug es una funcionalidad que permite registrar errores en el sistema de manera automatizada. Cuando se detecta un error, el método lo guarda en la base de datos MongoDB y simultáneamente envía una notificación por correo electrónico a los administradores del sistema (María De Posa y Cristian Báez).",
+    "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+  },
+  {
+    "ID": 2,
+    "ApplicationName": "ListBugs",
+    "ApplicationRoute": "General/BugTracker",
+    "ApplicationDescription": "Esta funcionalidad permite visualizar todos los errores registrados en el sistema. Ofrece opciones de filtrado por fecha, severidad y estado, facilitando así la gestión y seguimiento de los problemas reportados.",
+    "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+  },
+  {
+    "ID": 3,
+    "ApplicationName": "UserManagement",
+    "ApplicationRoute": "Admin/Users",
+    "ApplicationDescription": "Módulo que gestiona la creación, edición y eliminación de usuarios en el sistema. Permite asignar roles y permisos específicos, además de generar reportes de actividad por usuario.",
+    "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+  },
+  {
+    "ID": 4,
+    "ApplicationName": "DataExport",
+    "ApplicationRoute": "Reports/Export",
+    "ApplicationDescription": "Herramienta que facilita la exportación de datos del sistema en diversos formatos (CSV, PDF, Excel). Incluye opciones para personalizar los campos a exportar y aplicar filtros específicos.",
+    "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+  },
+  {
+    "ID": 5,
+    "ApplicationName": "NotificationCenter",
+    "ApplicationRoute": "Communication/Notifications",
+    "ApplicationDescription": "Sistema centralizado para el envío y gestión de notificaciones. Soporta múltiples canales (email, SMS, notificaciones push) y permite programar envíos automáticos basados en eventos del sistema.",
+    "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+  },
+  {
+    "ID": 6,
+    "ApplicationName": "APIGateway",
+    "ApplicationRoute": "Integration/Gateway",
+    "ApplicationDescription": "Componente que actúa como punto de entrada unificado para todas las solicitudes API. Gestiona la autenticación, balanceo de carga y enrutamiento hacia los servicios internos correspondientes.",
+    "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+  } 
+];
+
+// Variables para la paginación
+let currentPage = 1;
+const itemsPerPage = 3;
+let filteredData = [...data];
+
+// Función para mostrar las aplicaciones con paginación
+function displayApps(page = 1) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedData = filteredData.slice(startIndex, endIndex);
+    
+    let cards = '';
+    
+    if (paginatedData.length === 0) {
+        cards = `
+            <div class="no-results">
+                <i class="fa-solid fa-search"></i>
+                <p>No se encontraron aplicaciones que coincidan con la búsqueda.</p>
+                <p>Intenta con otros términos o revisa la ortografía.</p>
+            </div>
+        `;
+    } else {
+        paginatedData.forEach(app => {
+            cards += `
+                <div class="app-card">
+                    <div class="app-image-container">
+                        <img src="${app.ApplicationImage}" alt="${app.ApplicationName}" class="app-image">
+                    </div>
+                    <div class="app-content">
+                        <h2 class="app-title"><i class="fa-solid fa-cube"></i> ${app.ApplicationName}</h2>
+                        <p class="app-description">${app.ApplicationDescription}</p>
+                        <div class="app-route"><i class="fa-solid fa-link"></i> Ruta: ${app.ApplicationRoute}</div>
+                        <div class="app-meta">
+                            <span class="app-meta-item"><i class="fa-solid fa-hashtag"></i> ID: ${app.ID}</span>
+                            <span class="app-meta-item"><i class="fa-solid fa-code-branch"></i> Versión: 1.0</span>
+                            <span class="app-meta-item"><i class="fa-solid fa-calendar-check"></i> Última actualización: 2025-04-20</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+    
+    document.getElementById('app-container').innerHTML = cards;
+    
+    // Actualizar paginación
+    updatePagination();
+}
+
+// Función para actualizar los botones de paginación
+function updatePagination() {
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    let paginationHTML = '';
+    
+    if (totalPages > 1) {
+        // Botón anterior
+        paginationHTML += `<button class="pagination-button" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})"><i class="fa-solid fa-chevron-left"></i></button>`;
+        
+        // Números de página
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `<button class="pagination-button ${currentPage === i ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+        }
+        
+        // Botón siguiente
+        paginationHTML += `<button class="pagination-button" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})"><i class="fa-solid fa-chevron-right"></i></button>`;
+    }
+    
+    document.getElementById('pagination').innerHTML = paginationHTML;
+}
+
+// Función para cambiar de página
+function changePage(page) {
+    if (page < 1 || page > Math.ceil(filteredData.length / itemsPerPage)) return;
+    
+    currentPage = page;
+    displayApps(currentPage);
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Función para buscar aplicaciones
+function searchApps() {
+    const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+    
+    filteredData = data.filter(app => 
+        app.ApplicationName.toLowerCase().includes(searchTerm) || 
+        app.ApplicationDescription.toLowerCase().includes(searchTerm) ||
+        app.ApplicationRoute.toLowerCase().includes(searchTerm)
+    );
+    
+    currentPage = 1;
+    displayApps();
+}
+
+// Inicializar la página
+window.onload = function() {
+    displayApps();
+};
+
+// Funciones para el menú lateral
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+</script>
+</body>
+</html>

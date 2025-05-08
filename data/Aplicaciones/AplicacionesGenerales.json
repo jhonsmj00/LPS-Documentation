@@ -1,0 +1,24 @@
+[
+    {
+        "ID": 1,
+        "ApplicationName": "Add",
+        "ApplicationRoute": "General/BugTracker",
+        "ApplicationDescription": "El método AddBug es una funcionalidad que permite registrar errores en el sistema de manera automatizada. Cuando se detecta un error, el método lo guarda en la base de datos MongoDB y simultáneamente envía una notificación por correo electrónico a los administradores del sistema (María De Posa y Cristian Báez)",
+        "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+    },
+    {
+        "ID": 2,
+        "ApplicationName": "Add",
+        "ApplicationRoute": "General/BugTracker",
+        "ApplicationDescription": "El método AddBug es una funcionalidad que permite registrar errores en el sistema de manera automatizada. Cuando se detecta un error, el método lo guarda en la base de datos MongoDB y simultáneamente envía una notificación por correo electrónico a los administradores del sistema (María De Posa y Cristian Báez)",
+        "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+    },
+    {
+        "ID": 3,
+        "ApplicationName": "Addd",
+        "ApplicationRoute": "General/BugTracker",
+        "ApplicationDescription": "El método AddBug es una funcionalidad que permite registrar errores en el sistema de manera automatizada. Cuando se detecta un error, el método lo guarda en la base de datos MongoDB y simultáneamente envía una notificación por correo electrónico a los administradores del sistema (María De Posa y Cristian Báez)",
+        "ApplicationImage": "../assets/images/Aplicaciones/Add.png"
+    }
+
+]
