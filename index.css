@@ -276,6 +276,22 @@ code {
   transform: translateY(-2px);
 }
 
+.code-content {
+  background: #393c44 !important; /* Fondo gris oscuro azulado */
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Colores de sintaxis personalizados */
+.token.comment    { color: #5c6370 !important; transition: color 0.3s; } /* Comentarios: gris azulado */
+.token.string     { color: #98c379 !important; transition: color 0.3s; } /* Strings: verde claro */
+.token.keyword    { color: #c678dd !important; transition: color 0.3s; } /* Palabras clave: lila */
+.token.function   { color: #61afef !important; transition: color 0.3s; } /* Funciones: azul claro */
+.token.class-name { color: #e5c07b !important; transition: color 0.3s; } /* Nombres de clase: dorado */
+.token.number     { color: #d19a66 !important; transition: color 0.3s; } /* Números: naranja */
+.token.operator   { color: #56b6c2 !important; transition: color 0.3s; } /* Operadores: turquesa */
+.token.property   { color: #56b6c2 !important; transition: color 0.3s; } /* Propiedades: turquesa */
+.token.punctuation{ color: #abb2bf !important; transition: color 0.3s; } /* Puntuación: gris claro */
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
