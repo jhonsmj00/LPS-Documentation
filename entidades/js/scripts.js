@@ -1,4 +1,4 @@
-[
+const jsonData = [
     {
         "ID": 1,
         "EntityName": "E_BugRequest",
@@ -435,3 +435,111 @@
         "EntityImage": ""
     }
 ]
+
+//Variables para la paginación
+let currentPage = 1;
+const itemsPerPage = 10;
+let filteredData = [...jsonData];
+
+// Función para mostrar las aplicaciones con paginación
+function displayApps(page = 1) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedData = filteredData.slice(startIndex, endIndex);
+
+    let cards = '';
+
+    if (paginatedData.length === 0) {
+        cards = `
+                <div class="no-results">
+                    <i class="fa-solid fa-search"></i>
+                    <p>No se encontraron aplicaciones que coincidan con la búsqueda.</p>
+                    <p>Intenta con otros términos o revisa la ortografía.</p>
+                </div>
+            `;
+    } else {
+        paginatedData.forEach(app => {
+            cards += `
+                    <div class="app-card">
+                        <div class="app-image-container">
+                            <img src="${app.EntityImage}" alt="${app.EntityName}" class="app-image">
+                        </div>
+                        <div class="app-content">
+                            <h2 class="app-title"><i class="fa-solid fa-cube"></i> ${app.EntityName}</h2>
+                            <p class="app-description">${app.EntityDescription}</p>
+                            <div class="app-route"><i class="fa-solid fa-link"></i> Ruta: ${app.EntityRoute}</div>
+                            <div class="app-meta">
+                                <span class="app-meta-item"><i class="fa-solid fa-hashtag"></i> ID: ${app.ID}</span>
+                                <span class="app-meta-item"><i class="fa-solid fa-code-branch"></i> Versión: 1.0</span>
+                                <span class="app-meta-item"><i class="fa-solid fa-calendar-check"></i> Última actualización: 2025-04-20</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+        });
+    }
+
+    document.getElementById('app-container').innerHTML = cards;
+
+    // Actualizar paginación
+    updatePagination();
+}
+
+// Función para actualizar los botones de paginación
+function updatePagination() {
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    let paginationHTML = '';
+
+    if (totalPages > 1) {
+        paginationHTML += `<button class="pagination-button" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})"><i class="fa-solid fa-chevron-left"></i></button>`;
+
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `<button class="pagination-button ${currentPage === i ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+        }
+
+        paginationHTML += `<button class="pagination-button" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})"><i class="fa-solid fa-chevron-right"></i></button>`;
+    }
+
+    document.getElementById('pagination').innerHTML = paginationHTML;
+}
+
+function changePage(page) {
+    if (page < 1 || page > Math.ceil(filteredData.length / itemsPerPage)) return;
+
+    currentPage = page;
+    displayApps(currentPage);
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// ✅ Función de búsqueda usando propiedades correctas
+function searchApps() {
+    const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+
+    filteredData = data.filter(app =>
+        app.EntityName.toLowerCase().includes(searchTerm) ||
+        app.EntityDescription.toLowerCase().includes(searchTerm) ||
+        app.EntityRoute.toLowerCase().includes(searchTerm)
+    );
+
+    currentPage = 1;
+    displayApps();
+}
+
+// Inicializar
+window.onload = function () {
+    displayApps();
+};
+
+// Menú lateral
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
