@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <title>LPS - Aplicaciones</title>
     <style>
-        /* Estilos específicos para la página de aplicaciones */
+     
         .app-cards-container {
             display: flex;
             flex-direction: column;
@@ -278,14 +278,15 @@
         
         /* Estilos mejorados para el código */
         .code-container {
-            background: #00000000;
+            background: #1e1e1e;
             border-radius: 12px;
             padding: 25px;
             margin: 20px 0;
             overflow-x: auto;
             font-family: 'Consolas', 'Monaco', monospace;
             position: relative;
-          
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #333;
         }
 
         .code-header {
@@ -403,11 +404,6 @@
             }
         }
     </style>
-    <!-- Prism.js CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    <!-- Prism.js JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
 </head>
 <body>
 
@@ -561,7 +557,7 @@ function displayApps(page = 1) {
                                 <i class="fa-regular fa-copy"></i> Copiar
                             </button>
                         </div>
-                        <pre class="code-content"><code class="language-csharp">${app.Code}</code></pre>
+                        <pre class="code-content">${app.Code}</pre>
                     </div>
                 </div>
             `;
@@ -569,7 +565,6 @@ function displayApps(page = 1) {
     }
     
     document.getElementById('app-container').innerHTML = cards;
-    Prism.highlightAll();
     
     // Actualizar paginación
     updatePagination();

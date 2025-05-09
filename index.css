@@ -60,8 +60,21 @@ body {
   background-color: var(--sidenav-bg);
   overflow-x: hidden;
   transition: 0.3s;
-  padding-top: 60px;
+
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.anone {
+  text-decoration: none;
+  color: white;
+  padding: 13px;  
+  border-radius: 10px;
+
+}
+
+.anone:hover {
+  background-color: #6b6b6b51;
+
 }
 
 .sidenav a {
@@ -85,18 +98,16 @@ body {
 }
 
 .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
+
   font-size: 36px;
-  margin-left: 50px;
-  padding: 8px 15px;
+  text-align: end;
+  padding: 18px;
 }
 
 #main {
   transition: margin-left .3s;
   padding: 30px;
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
