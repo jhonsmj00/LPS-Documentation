@@ -129,7 +129,7 @@ Este código define la clase MongoContext, que implementa la interfaz IMongoCont
 
             public UserMongoContext()
             {
-                var settings = MongoClientSettings.FromConnectionString("mongodb+srv://LPSsa:LPSsa_dev2023@lpsgrupo.i5zrwjg.mongodb.net/");
+                var settings = MongoClientSettings.FromConnectionString("YOUR-URL-CONNECTION");
                 settings.AllowInsecureTls = true;
 
                 var mongoClient = new MongoClient(settings);
