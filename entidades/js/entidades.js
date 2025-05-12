@@ -673,7 +673,7 @@ const data = [
         "ID": 25,
         "EntityName": "E_Festivos",
         "EntityRoute": "Movil/VisitasLogic",
-        "EntityDescription": "Entidad que representa atributos de una fecha festiva en el calendario.",
+        "EntityDescription": "Entidad que representa atributos de una fecha festiva en el calendario. Cuenta diferentes atributos entre ellos: AusenciaFestivos(TiposAusenciaFestivos) este es un cojunto de constantes.",
         "EntityImage": `
         public enum TiposAusenciaFestivos
         {
@@ -693,7 +693,7 @@ const data = [
         "ID": 26,
         "EntityName": "E_Rutas",
         "EntityRoute": "Movil/VisitasLogic",
-        "EntityDescription": "Entidad que establece atributos que tiene una ruta. ",
+        "EntityDescription": "Entidad que establece atributos que tiene una ruta. Cuenta con varios atributos entre los cuales destaca Emplazamientos (List<E_Emplazamientos>). Este ultimo es un tipo de dato lista de una entidad.",
         "EntityImage": `
         namespace VisitasLogic.Entities
         {
@@ -729,7 +729,7 @@ const data = [
         "ID": 28,
         "EntityName": "E_Visitas",
         "EntityRoute": "Movil/VisitasLogic",
-        "EntityDescription": "Entidad que representa atributos de visita a proyectos u obras.",
+        "EntityDescription": "Entidad que representa atributos de visita a proyectos u obras. Cuenta con varias atributos que cuenta con tipos de datos de otras entidades y listas, algunas de ellos son: List<VisitasLogic.EditUserDTORequest>, E_Modulo Modulo, E_Proyecto Proyecto, E_Operador Operador, E_Emplazamientos Emplazamiento, E_Propietarios Cliente, DateTime? FechaEstimadaVisita, DateTime? FechaRealVisita, List<VisitasLogic.E_Estado> Estados, List<E_Comentarios> Comentarios,  E_AccesoDocumentacion? AccesoDocumentacion.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_Visitas : AuditableEntity<string>
@@ -766,7 +766,7 @@ const data = [
         "ID": 29,
         "EntityName": "E_Albaran",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que representa atributos de albaran(acreditacion de recepcion de un pedido). ",
+        "EntityDescription": "Entidad que representa atributos de albaran(acreditacion de recepcion de un pedido). Asimismo, cuenta con el atributo de tipo List<E_ProductoAlbaran>. Es importante resaltar que cuenta con una clase E_ProductoAlbaran el cual cuenta con atributos de tipo E_Producto y E_Proveedor.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_Albaran
@@ -805,7 +805,7 @@ const data = [
         "ID": 30,
         "EntityName": "E_Almacen",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que representa atributos de un almacén.",
+        "EntityDescription": "Entidad que representa atributos de un almacén. Cuenta con atributos que establecen ser requeridos con su respectivo mensaje. Uno de los atributos cuenta con un tipo List<AlbaranDatos>.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_Almacen : AuditableEntity<string>
@@ -836,7 +836,7 @@ const data = [
         "ID": 31,
         "EntityName": "E_AprobacionesCompra",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Representa aprobaciones de una compra, la cual establece un estado y el usuario que aprueba la compra.",
+        "EntityDescription": "Representa aprobaciones de una compra, la cual establece un estado y el usuario que aprueba la compra. Cuenta con un atributo que utiliza un tipo de dato tipo E_Aprobador.",
         "EntityImage": `
         namespace LogisticaData.Entities
         {
@@ -875,7 +875,7 @@ const data = [
         "ID": 33,
         "EntityName": "E_Compras",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que representa atributos de una compra (proveedor, almacen, aldebaran).",
+        "EntityDescription": "Entidad que representa atributos de una compra (proveedor, almacen, aldebaran).  Cuenta con tipos de dato tipo List( List<E_AprobacionesCompra>, List<E_ProductoAlmacen>, List<E_Albaran>, List<E_EstadoFibra>)",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_Compras : AuditableEntity<string>
@@ -915,7 +915,7 @@ const data = [
         "ID": 34,
         "EntityName": "E_Producto",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que representa atributos de un producto (nombre, descripcion, unidad).",
+        "EntityDescription": "Entidad que representa atributos de un producto (nombre, descripcion, unidad). Esta entidad cuenta con dos clases internas las cuales son ProveedorProducto ,la cual contiene tipos List(List<Medida> ListaMedidas, List<ProveedorProducto> Proveedores), y Medida que cuenta con una lista de constantes(CM,DM,M), esta misma contiene un atributo con tipo de dato UnidadMedida.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_Producto : AuditableEntity<string>
@@ -976,7 +976,7 @@ const data = [
         "ID": 35,
         "EntityName": "E_ProductoAlmacen",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que define atributos de relacion de un producto que se encuentra en un almacen.",
+        "EntityDescription": "Entidad que define atributos de relacion de un producto que se encuentra en un almacen. Cuenta con un atributo de tipo EProducto producto.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_ProductoAlmacen : AuditableEntity<string>
@@ -1007,7 +1007,7 @@ const data = [
         "ID": 36,
         "EntityName": "E_ProductoAlmacenGrouped",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que define atributos de productos agrupados en almacenes.",
+        "EntityDescription": "Entidad que define atributos de productos agrupados en almacenes. Cuenta con un tipo de dato List<E_ProductosStock>.",
         "EntityImage": `
         namespace LogisticaData.Entities
         {
@@ -1034,7 +1034,7 @@ const data = [
         "ID": 37,
         "EntityName": "E_ProductoNodo",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que define un nodo logistico, punto de almacenamineto o distribucion de productos.",
+        "EntityDescription": "Entidad que define un nodo logistico, punto de almacenamineto o distribucion de productos. Cuenta con un tipo de dato E_Producto Producto. Asimismo cuenta con validaciones de atributo como mensajes.",
         "EntityImage": `
         public class E_ProductoNodo : AuditableEntity<string>
         {
@@ -1057,7 +1057,7 @@ const data = [
         "ID": 38,
         "EntityName": "E_ProductosStock",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que define atributos de un producto, acerca de stock disponible, informacion de almacen y proveedores",
+        "EntityDescription": "Entidad que define atributos de un producto, acerca de stock disponible, informacion de almacen y proveedores. Cuenta con un tipo de datos E_Producto ProductoEnStock.",
         "EntityImage": `
         namespace LogisticaData.Entities
         {
@@ -1089,7 +1089,7 @@ const data = [
         "ID": 39,
         "EntityName": "E_Proveedor",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que representa atributos de un proveedor (suministro de productos).",
+        "EntityDescription": "Entidad que representa atributos de un proveedor (suministro de productos). Esta entidad cuenta con validaciones y requeridos.",
         "EntityImage": `
         public class E_Proveedor : AuditableEntity<string>
         {
@@ -1149,7 +1149,7 @@ const data = [
         "ID": 40,
         "EntityName": "E_SolicitudCompra",
         "EntityRoute": "RedFija/LogisticaData",
-        "EntityDescription": "Entidad que establece atributos para realizar una solicitud de compra.",
+        "EntityDescription": "Entidad que establece atributos para realizar una solicitud de compra. Cuenta con una tipo de datos List(List<SeleccionCompra> SeleccionCompra). Asimismo, contiene un clase SeleccionCompra con un atributo de tipo E_Producto (E_producto producto).",
         "EntityImage": `
         namespace LogisticaData.Entities
         {
@@ -1205,7 +1205,7 @@ const data = [
         "ID": 42,
         "EntityName": "E_EstadoFibra",
         "EntityRoute": "RedFija/RedFijaData",
-        "EntityDescription": "Entidad que establece atributos del estado de fibra(fecha, usuario, estado). ",
+        "EntityDescription": "Entidad que establece atributos del estado de fibra(fecha, usuario, estado). Esta entidad cuenta con un tipo de dato E_User(E_User? UsuarioEstado) que permite el manejo de usuario que establece el estado.",
         "EntityImage": `
         public class E_EstadoFibra
         {
@@ -1254,7 +1254,7 @@ const data = [
         "ID": 45,
         "EntityName": "E_SeguimientoE2E",
         "EntityRoute": "RedFija/SeguimientoFibraLogic",
-        "EntityDescription": "Entidad que establece atributos de un seguimiento (objetivos, fechas, instalaciones, licencias).",
+        "EntityDescription": "Entidad que establece atributos de un seguimiento (objetivos, fechas, instalaciones, licencias). Esta entidad cuenta diferentes tipos de datos como: E_User(public E_User PMLPS), E_Localidades(public E_Localidades Localidad), DataBloqueos(public DataBloqueos DataBloqueos), DataBQA(public DataBQA DataBQA), DataCertificacionLyntia(public DataCertificacionLyntia DataCertificacionLyntia), DataDOAs(public DataDOAs DataDOAs), DataIngenieria (public DataIngenieria DataIngenieria), DataInstalacion(public DataInstalacion DataInstalacion), DataLicencias(public DataLicencias DataLicencias), DataObraCivil(public DataObraCivil DataObraCivil), DataUtilities(public DataUtilities DataUtilities), DataStockSubproyecto(public DataStockSubproyecto DataStockSubproyecto). Asimismo cuenta con tipos de datos List(List<DataIngenieria>, List<DataUtilities>, List<DataObraCivil>, List<DataLicencias>, List<DataInstalacion>, List<DataDOAs>, List<DataBQA>, public List<DataCertificacionLyntia>, List<DataBloqueos>).",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_SeguimientoE2E : AuditableEntity<string>
@@ -1304,7 +1304,7 @@ const data = [
         "ID": 46,
         "EntityName": "E_SolicitudDiseñoF",
         "EntityRoute": "RedFija/SolicitudesDiseñoFibra",
-        "EntityDescription": "Entidad que establece atributos de una solicitud de diseño(diseñador, tipotrabajo).",
+        "EntityDescription": "Entidad que establece atributos de una solicitud de diseño(diseñador, tipotrabajo). Cuenta con validaciones a nivel de mensajes utilizando anotaciones Required. Asimismo cuenta con tipos de datos tipo: E_User, List<E_EstadoFibra>, List<E_ComentariosFibra>.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_SolicitudDiseñoF : AuditableEntity<string>
@@ -1352,7 +1352,7 @@ const data = [
         "ID": 47,
         "EntityName": "E_AccesosFibra",
         "EntityRoute": "RedFija/VisitasFibra",
-        "EntityDescription": "Entidad que representa un acceso de fibra (programacion, fecha  planificada).",
+        "EntityDescription": "Entidad que representa un acceso de fibra (programacion, fecha  planificada). Contiene atributos validados a traves de anotaciones Required. Asimismo, cuenta con tipos de datos tipo E_EmplazamientosFibra, List<E_EstadoFibra>, List<E_ComentariosFibra>.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_AccesosFibra : AuditableEntity<string>
@@ -1402,7 +1402,7 @@ const data = [
         "ID": 48,
         "EntityName": "E_EmplazamientosFibra",
         "EntityRoute": "RedFija/VisitasFibra",
-        "EntityDescription": "Entidad que representa una visita (ubicacion, latitudes, codigo postal.",
+        "EntityDescription": "Entidad que representa una visita (ubicacion, latitudes, codigo postal. Contiene atributos validados a traves de anotaciones Required.",
         "EntityImage": `
         namespace VisitasFibraLogicEmplazamientos;
         [BsonIgnoreExtraElements]
@@ -1437,7 +1437,7 @@ const data = [
         "ID": 49,
         "EntityName": "E_Aprobaciones",
         "EntityRoute": "RRHH/Contrataciones",
-        "EntityDescription": "Entidad que establece atributos de una aprobacion de contratacion (retribucion, periodo prueba, incorporacion).",
+        "EntityDescription": "Entidad que establece atributos de una aprobacion de contratacion (retribucion, periodo prueba, incorporacion). Cuenta con tipos de datos como List<E_DatosAprobacion>, List<E_Comentarios>.",
         "EntityImage": `
         public class E_Aprobaciones : AuditableEntity<string>
         {
@@ -1474,7 +1474,7 @@ const data = [
         "ID": 50,
         "EntityName": "E_DatosAprobacion",
         "EntityRoute": "RRHH/Contrataciones",
-        "EntityDescription": "Entidad que establece atributos que permiten aprobar una contratacion (usuario aprobador, comentarios).",
+        "EntityDescription": "Entidad que establece atributos que permiten aprobar una contratacion (usuario aprobador, comentarios). Cuenta con tipos de datos como E_User.",
         "EntityImage": `
         public class E_DatosAprobacion
         {
@@ -1490,7 +1490,7 @@ const data = [
         "ID": 51,
         "EntityName": "E_Entrevistas",
         "EntityRoute": "RRHH/Contrataciones",
-        "EntityDescription": "Entidad que establece atributos de una entrevista (entrevistado, entrevistador, comentarios).",
+        "EntityDescription": "Entidad que establece atributos de una entrevista (entrevistado, entrevistador, comentarios). Cuenta con tipos de datos como E_UsuariosRRHH, List<DataEntrevistas>, List<E_Comentarios. Por otro lado esta entidad cuenta con una clase interna llamada DataEntrevistas la cual cuenta con un atributos de tipo List<E_User>.",
         "EntityImage": `
         [BsonIgnoreExtraElements]
         public class E_Entrevistas
@@ -1841,7 +1841,7 @@ function displayApps(page = 1) {
             cards += `
                 <div class="app-card">
                     <div class="app-content">
-                        <h2 class="app-title"><i class="fa-solid fa-cube"></i> ${app.ID + `.  ` + app.EntityName}</h2>
+                        <h2 class="app-title"><i class="fa-solid fa-cube"></i> ${app.EntityName}</h2>
                         <p class="app-description">${app.EntityDescription}</p>
                       
                     </div>
@@ -1904,9 +1904,9 @@ function searchApps() {
     const searchTerm = document.getElementById('searchBox').value.toLowerCase();
 
     filteredData = data.filter(app =>
-        app.ApplicationName.toLowerCase().includes(searchTerm) ||
-        app.ApplicationDescription.toLowerCase().includes(searchTerm) ||
-        app.ApplicationRoute.toLowerCase().includes(searchTerm)
+        app.EntityName.toLowerCase().includes(searchTerm) ||
+        app.EntityDescription.toLowerCase().includes(searchTerm) ||
+        app.EntityRoute.toLowerCase().includes(searchTerm)
     );
 
     currentPage = 1;
