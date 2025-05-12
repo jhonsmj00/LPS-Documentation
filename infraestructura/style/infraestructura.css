@@ -139,6 +139,9 @@
     padding-bottom: 10px;
 }
 
+.font-bold{
+    font-weight: 600;
+}
 /* Estilos responsivos */
 @media (min-width: 768px) {
     .app-card {
