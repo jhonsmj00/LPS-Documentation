@@ -429,3 +429,25 @@
         margin-top: 30px;
     }
 }
+
+.vista-btn {
+    background: #38435c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(40, 44, 52, 0.12);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    outline: none;
+}
+
+.vista-btn:hover,
+.vista-btn:focus {
+    background: #61afef;
+    color: #282c34;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(97, 175, 239, 0.18);
+}
